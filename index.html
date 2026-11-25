@@ -1,182 +1,160 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cuba Real — La realidad que no te cuentan</title>
-<style>
-  :root {
-    --bg: #0a0a0c;
-    --surface: #111114;
-    --text: #f5f5f7;
-    --text-secondary: #a1a1a6;
-    --accent: #ff3b30;
-    --accent-soft: #ff453a;
-    --border: rgba(255,255,255,0.08);
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
-  header {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(10,10,12,0.72);
-    backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .logo {
-    font-weight: 600; font-size: 20px; letter-spacing: -0.4px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .logo span { color: var(--accent); }
-  nav a {
-    color: var(--text-secondary); text-decoration: none; margin-left: 28px;
-    font-size: 15px; transition: color 0.2s;
-  }
-  nav a:hover { color: var(--text); }
-  .hero {
-    min-height: 100vh; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; text-align: center;
-    padding: 80px 24px 60px;
-  }
-  .hero h1 {
-    font-size: clamp(42px, 6vw, 72px); font-weight: 600;
-    letter-spacing: -1.5px; line-height: 1.05; max-width: 900px;
-  }
-  .hero p.subtitle {
-    margin-top: 20px; font-size: 21px; color: var(--text-secondary);
-    max-width: 620px; font-weight: 400;
-  }
-  .clock-container {
-    margin: 60px 0 40px;
-    position: relative;
-  }
-  .years-circle {
-    width: 180px; height: 180px; border-radius: 50%;
-    border: 2px solid transparent;
-    background: conic-gradient(from 0deg, #ff3b30, #ff6b6b, #ff3b30);
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 20px;
-    animation: spin 20s linear infinite;
-  }
-  .years-circle::before {
-    content: ""; position: absolute; inset: 4px; border-radius: 50%;
-    background: var(--bg);
-  }
-  .years-number {
-    position: relative; font-size: 68px; font-weight: 600;
-    letter-spacing: -2px; z-index: 2;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .time-units {
-    display: flex; gap: 32px; justify-content: center; margin-top: 12px;
-    font-size: 15px; color: var(--text-secondary); font-variant-numeric: tabular-nums;
-  }
-  .time-units span { color: var(--accent); font-weight: 500; }
-  .stats {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 24px; max-width: 900px; margin: 80px auto; padding: 0 24px;
-  }
-  .stat-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 16px; padding: 28px 24px; text-align: left;
-  }
-  .stat-card h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-secondary); margin-bottom: 8px; }
-  .stat-card .number { font-size: 36px; font-weight: 600; letter-spacing: -1px; }
-  .stat-card .number span { color: var(--accent); }
-  section { max-width: 1100px; margin: 0 auto; padding: 80px 24px; }
-  section h2 { font-size: 40px; font-weight: 600; letter-spacing: -0.8px; margin-bottom: 24px; }
-  .lang-switch { position: fixed; bottom: 24px; right: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 6px 12px; font-size: 14px; cursor: pointer; }
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CUBA: LA REALIDAD QUE NO TE CUENTAN</title>
+<meta name="description" content="Hambre, apagones, hospitales sin medicinas, escuelas sin maestros, el químico en el barrio y 1.339 presos políticos. La realidad de Cuba en 2026. Sin propaganda. Sin filtros.">
+<meta name="theme-color" content="#07080a">
+<link rel="canonical" href="https://www.cubareal.net/">
+<link rel="alternate" hreflang="es" href="https://www.cubareal.net/">
+<link rel="alternate" hreflang="en" href="https://www.cubareal.net/en/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="CUBA: LA REALIDAD QUE NO TE CUENTAN">
+<meta property="og:description" content="Hambre, apagones, hospitales sin medicinas, escuelas sin maestros, el químico en el barrio y 1.339 presos políticos. La realidad de Cuba en 2026. Sin propaganda. Sin filtros.">
+<meta property="og:url" content="https://www.cubareal.net/">
+<meta property="og:image" content="https://www.cubareal.net/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=mwwizqns">
 </head>
-<body>
-
-<header>
-  <div class="logo">Cuba <span>Real</span></div>
-  <nav>
-    <a href="#hoy">Hoy</a>
-    <a href="#presos">Presos</a>
-    <a href="#11j">11J</a>
-    <a href="#dictadura">Dictadura</a>
-    <a href="#exilio">Exilio</a>
-    <a href="#metodologia">Metodología</a>
-  </nav>
+<body data-lang="es" data-page="hoy">
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="bar">
+  <a class="brand" href="/" aria-label="Cuba Real"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="currentColor" stroke-width="1" opacity=".35"/><polygon fill="#ff5a1f" points="16,6 18.4,13.4 26,14 20,18.6 22.2,26 16,21.8 9.8,26 12,18.6 6,14 13.6,13.4"/></svg><b>CUBA <i>REAL</i></b></a>
+  <div class="bar-sec"><span>01</span><span>/</span><strong>Hoy</strong></div>
+  <div class="bar-right">
+    <a class="bar-cell usd" href="/dolar/" title="Yadio">USD → CUP<b class="up" data-live="usd">—</b></a>
+    <div class="bar-cell hide-s">La Habana<b data-live="havana">--:--</b></div>
+    <a class="bar-cell lang-btn" href="/en/" hreflang="en" lang="en" aria-label="English version"><span class="on">ES</span><span>/</span><span>EN</span></a>
+    <a class="bar-cell join" href="/unirse/">Únete</a>
+    <button class="menu-btn" type="button" aria-label="Secciones" aria-expanded="false" aria-controls="rail"><i></i><i></i></button>
+  </div>
 </header>
-
-<main>
-  <div class="hero">
-    <h1>La realidad que no te cuentan</h1>
-    <p class="subtitle">Documentación verificada de la crisis en Cuba. Fuentes, cifras y contexto. Sin propaganda.</p>
-
-    <div class="clock-container">
-      <div class="years-circle"></div>
-      <div class="years-number" id="years">67</div>
-      <div class="time-units" id="time-units">
-        <div><span id="days">0</span> días</div>
-        <div><span id="hours">0</span> h</div>
-        <div><span id="minutes">0</span> m</div>
-        <div><span id="seconds">0</span> s</div>
+<nav class="rail" id="rail" aria-label="Secciones">
+  <div class="rail-head"><span>Secuencia</span><span>01/11</span></div>
+  <ol><li><a href="/" aria-current="page"><span class="n">01</span><span class="t">Hoy</span></a></li><li><a href="/pais/"><span class="n">02</span><span class="t">El país</span></a></li><li><a href="/pueblo/"><span class="n">03</span><span class="t">El pueblo</span></a></li><li><a href="/singaos/" class="hot"><span class="n">04</span><span class="t">(Singaos)</span></a></li><li><a href="/dictadura/"><span class="n">05</span><span class="t">La Dictadura</span></a></li><li><a href="/exilio/"><span class="n">06</span><span class="t">Exilio</span></a></li><li><a href="/metodologia/"><span class="n">07</span><span class="t">Metodología</span></a></li><li><a href="/contexto/"><span class="n">08</span><span class="t">Contexto</span></a></li><li><a href="/historia/"><span class="n">09</span><span class="t">Historia de Cuba</span></a></li><li><a href="/quienes-somos/"><span class="n">10</span><span class="t">Quiénes somos</span></a></li><li><a href="/unirse/"><span class="n">11</span><span class="t">Unirse</span></a></li></ol>
+  <div class="rail-foot">Hoy en Cuba<br><b data-live="date">—</b><br><a href="/dolar/">El dólar →</a></div>
+</nav>
+<div class="rail-scrim" aria-hidden="true"></div>
+<div class="shell">
+<main id="contenido">
+<section class="hero" aria-label="La realidad que no te cuentan">
+  <div class="hero-globe" data-globe="/assets/geo/" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <div>
+      <p class="hero-kicker">Hambre. Oscuridad. Sin medicinas. Sin agua. Cárcel.</p>
+      <h1>Cuba: la realidad <em>que no te cuentan</em></h1>
+      <p class="hero-lead">8.267 muertes documentadas por Cuba Archive desde 1959. Hoy: 1.339 presos políticos y el 94% en pobreza extrema.</p>
+      <div class="hero-ctas"><a class="btn btn-signal" href="/pais/">Ver lo que pasa →</a><a class="btn" href="/pueblo/#parte-11j">El 11J</a><a class="btn" href="/metodologia/">Cómo se cuentan las 8.267</a></div>
+    </div>
+    <aside class="telemetry" aria-label="Telemetría · Cuba">
+      <header><span>Telemetría · Cuba</span><span class="red">● En vivo</span></header>
+      <dl><dt>Hora en La Habana</dt><dd class="" data-t="havana">—</dd><dt>Fase solar en Cuba</dt><dd class="" data-t="phase" data-day="Día" data-night="Noche">—</dd><dt>Punto subsolar</dt><dd class="" data-t="sun">—</dd><dt>Satélite OBS-59</dt><dd class="" data-t="sat">—</dd><dt>USD → CUP · Yadio</dt><dd class="luz" data-t="usd">—</dd><dt>Presos políticos · lista PD</dt><dd class="sig">1.355</dd><dt>Apagones nacionales 2026</dt><dd class="sig">8</dd><dt>Luces en apagón (sim.)</dt><dd class="luz" data-t="dark">—</dd></dl>
+      <p>Terminador día/noche, punto subsolar y hora calculados en tiempo real. Luces y apagones sobre Cuba: ilustrativos.</p>
+    </aside>
+  </div>
+  <div class="mclock">
+    <div class="mc-bar" aria-hidden="true"><i data-live="year-bar"></i></div>
+    <div class="wrap">
+      <div class="mc-l">T+<b>1959</b>Tiempo bajo esta dictadura · desde 1959</div>
+      <div class="mc-d" role="timer" aria-label="Tiempo bajo esta dictadura · desde 1959">
+        <div><b class="y" data-live="c-y">67</b><span>años</span></div><i>:</i>
+        <div><b data-live="c-d">000</b><span>días</span></div><i>:</i>
+        <div><b data-live="c-h">00</b><span>horas</span></div><i>:</i>
+        <div><b data-live="c-m">00</b><span>min</span></div><i>:</i>
+        <div><b data-live="c-s">00</b><span>seg</span></div>
       </div>
+      <p class="mc-r" data-live="c-sentence"></p>
     </div>
-    <p style="color: var(--text-secondary); font-size: 15px;">Desde el 1 de enero de 1959</p>
   </div>
+</section>
+<div class="wrap"><div class="doc">
+<a class="card card-red go" href="/singaos/"><span class="eyebrow red">Entra aquí</span><span class="num red">(Singaos)</span><span class="muted small">Díaz-Canel, Fidel, Raúl, El Cangrejo y el Che. Fechas y fuentes.</span><span class="red small">Ver</span></a><section id="luchan"><p class="eyebrow red">1 de octubre de 2026</p>
+<h2>Patria y Vida.</h2>
+<p>Jóvenes sin miedo, a sabiendas de que pueden morir por su libertad y por Cuba.</p>
+<p class="muted small">No son un partido. Sentenciaron a Anna Sofía Benítez Silvente y a su madre, Caridad Silvente. El pastor no iba solo: de camino se llevaron también a su esposa y a otras dos personas. Los dos del cuartico siguen en una prisión de Holguín.</p>
+<div class="grid g3"><a class="card go" href="/pueblo/#parte-voces"><p class="eyebrow red">Abrir el caso</p>
+<h3>Anna y Caridad</h3>
+<p class="muted small">Anna Sofía Benítez Silvente y Caridad Silvente, madre e hija</p>
+<p class="small">La citación iba a nombre de la madre. Las dos grabaron al policía en la puerta, en Alamar. A las dos las declararon culpables. Dos años de limitación de libertad a cada una. El abogado del policía había pedido cárcel para Anna. El tribunal no se la puso. Su abogado, Roberto Ortega, dijo que el fallo escrito sale en unos 15 días.</p>
+</a><a class="card go" href="/pueblo/#parte-voces"><p class="eyebrow red">Abrir el caso</p>
+<h3>Pregonero de Cristo</h3>
+<p class="muted small">Rolando Fidel Pérez Lora, su esposa Gelayne Rodríguez Ávila, David Espinosa y la esposa de Espinosa</p>
+<p class="small">Iba a Cojímar a acompañarlas. La Seguridad del Estado lo tiró al suelo y lo esposó. En cámara preguntó por qué. Un agente dijo que en la unidad se levanta. CubaNet informó que también detuvieron a Gelayne, al líder bautista David Espinosa y a la esposa de Espinosa.</p>
+</a><a class="card go" href="/pueblo/#parte-voces"><p class="eyebrow red">Abrir el caso</p>
+<h3>El4tico</h3>
+<p class="muted small">Ernesto Ricardo Medina y Kamil Zayas Pérez, Holguín</p>
+<p class="small">Se los llevaron de sus casas en Piedra Blanca el 6 de febrero. El 2 de octubre de 2026 ADN Cuba informó que la Fiscalía de Holguín pidió ocho años para Medina y diez para Zayas, y el tribunal abrió el juicio. Siguen en la Prisión Provincial de Holguín.</p>
+</a></div>
+<p class="muted small">No se los llevaron a todos. CubaNet nombró, entre quienes sí llegaron al tribunal de Cojímar, a sor Nadieska Almeida, al sacerdote Lester Rafael Zayas Díaz y a Pedro Álvarez, preso del 11J.</p>
+</section>
+<p class="eyebrow luz">Once secciones</p>
+<p class="muted small">Empieza aquí si acabas de llegar. (Singaos) está arriba. Después: El país, El pueblo, La Dictadura, Exilio, Metodología, Contexto, Historia, Quiénes somos y Unirse. Cada número tiene fuente.</p>
+<a class="card pill go" href="/" aria-current="page"><span class="muted tab">01</span><span class="small">Hoy</span></a><a class="card pill go" href="/pais/"><span class="muted tab">02</span><span class="small">El país</span></a><a class="card pill go" href="/pueblo/"><span class="muted tab">03</span><span class="small">El pueblo</span></a><a class="red card card-red pill go" href="/singaos/"><span class="muted tab">04</span><span class="red small">(Singaos)</span></a><a class="red card card-red pill go" href="/dictadura/"><span class="muted tab">05</span><span class="red small">La Dictadura</span></a><a class="card pill go" href="/exilio/"><span class="muted tab">06</span><span class="small">Exilio</span></a><a class="card pill go" href="/metodologia/"><span class="muted tab">07</span><span class="small">Metodología</span></a><a class="card pill go" href="/contexto/"><span class="muted tab">08</span><span class="small">Contexto</span></a><a class="card pill go" href="/historia/"><span class="muted tab">09</span><span class="small">Historia de Cuba</span></a><a class="card pill go" href="/quienes-somos/"><span class="muted tab">10</span><span class="small">Quiénes somos</span></a><a class="card pill go" href="/unirse/"><span class="muted tab">11</span><span class="small">Unirse</span></a><div class="grid g1"><article><img src="/photos/malecon-apagon.jpg" alt="Días enteros a oscuras" loading="lazy" decoding="async" width="1536" height="864"><p class="eyebrow luz">Apagones</p>
+<h3>Días enteros a oscuras</h3>
+<p>En agosto de 2026 la generación cubrió menos de un tercio de la demanda (OCHA). El 18 de septiembre el MINEM confirmó el octavo apagón nacional del año. No es un rato sin luz: es rehacer la vida alrededor de dos o tres horas, cuando las hay.</p>
+</article>
+<article><img src="/photos/hospital.jpg" alt="Farmacias vacías, hospitales que se caen" loading="lazy" decoding="async" width="1568" height="1045"><p class="eyebrow luz">Salud</p>
+<h3>Farmacias vacías, hospitales que se caen</h3>
+<p>El gobierno admite que solo está disponible cerca del 30% del cuadro básico de medicamentos. Más de 100.000 cirugías en espera —unas 12.000 de niños—. En el Hospital Ramón González Coro se ha operado con la linterna del celular. La ONU alerta que 70.000 niños tienen en riesgo su vacunación.</p>
+</article>
+<article><img src="/photos/san-lazaro.jpg" alt="Sin luz tampoco hay agua" loading="lazy" decoding="async" width="1568" height="882"><p class="eyebrow luz">Agua</p>
+<h3>Sin luz tampoco hay agua</h3>
+<p>Más de 3,1 millones de personas sufren cortes totales o parciales de agua. El Estado admite que más del 40% del agua bombeada se pierde en redes rotas. En La Habana, entre el 40 y el 70%. El 87% del abasto depende del SEN: sin luz, no hay grifo.</p>
+</article>
+</div>
+<div class="grid g4"><p class="eyebrow luz">Independiente</p>
+<p class="num tab">8 de 10</p>
+<p class="muted small">se saltaron una comida · OCDH 2026</p>
+<details class="how"><summary>Cómo se cuenta</summary><p class="muted small">IX estudio del Observatorio Cubano de Derechos Humanos. 1.318 entrevistas, junio y julio de 2026. Ocho de cada diez dijeron saltarse una comida. No es un censo: es una encuesta. Quien no pudo contestar no entra.</p>
+</details>
+<p class="eyebrow luz">Independiente</p>
+<p class="num tab">94%</p>
+<p class="muted small">vive en pobreza extrema · OCDH</p>
+<details class="how"><summary>Cómo se cuenta</summary><p class="muted small">El mismo IX estudio del OCDH, jun–jul 2026. El 94% cae en el umbral de pobreza extrema que usa el Observatorio, no el del Estado. La ONEI no publica esa cifra. Puede quedar corta o pasarse según quién respondió.</p>
+</details>
+<p class="eyebrow luz">Independiente</p>
+<p class="num tab">1,355</p>
+<p class="muted small">en la lista pública · PD noviembre</p>
+<details class="how"><summary>Cómo se cuenta</summary><p class="muted small">Prisoners Defenders, lista cerrada en agosto de 2026: 1.339 presos políticos verificados. En el mes, 19 altas y 7 bajas. No es una cifra de un tribunal cubano. PD dice que puede no capturar todos los casos. Los expedientes de «conducta predelictiva» van aparte: PD los estima en al menos 11.000 y no están dentro de los 1.339. Lista pública, leída al abrir la página: 1,355 nombres, noviembre de 2026. 19 nuevos en el mes. El informe de agosto de 2026 sigue cerrado en 1.339.</p>
+</details>
+<p class="eyebrow luz">Oficial</p>
+<p class="num tab">9,43 M</p>
+<p class="muted small">habitantes · ONEI, cierra 2025</p>
+<details class="how"><summary>Cómo se cuenta</summary><p class="muted small">ONEI, Indicadores Demográficos 2025: 9.434.593 residentes al 31 de diciembre de 2025. Es la cifra del Estado. Foreign Affairs sitúa el éxodo desde 2020 entre el 13 y el 24% de la población. Si la salida no se registró entera, la cifra oficial se queda alta.</p>
+</details>
+</div>
+<a class="card go" href="/dolar/"><span class="eyebrow luz">1 dólar · última lectura</span><span class="disp tab">785 CUP</span><span class="muted small">Ver el dólar →</span></a><div class="grid g2"><a class="card go" href="/contexto/"><p class="eyebrow luz">Por qué falla la luz</p>
+<p class="muted small">Combustible, plantas viejas, sin reserva. El 18 de septiembre el sistema cayó por octava vez en el año.</p>
+</a><a class="card go" href="/contexto/"><p class="eyebrow luz">Por qué faltan las medicinas</p>
+<p class="muted small">El propio gobierno dice que solo está el 30% del cuadro básico.</p>
+</a><a class="card go" href="/contexto/"><p class="eyebrow luz">Por qué el peso no compra</p>
+<p class="muted small">El Estado sigue anotando un dólar a 24 pesos. En la calle pasa de 700.</p>
+</a><a class="card go" href="/contexto/"><p class="eyebrow luz">Por qué se van</p>
+<p class="muted small">Desde 2020 se fue entre el 13 y el 24% de la población. No es porque sí.</p>
+</a></div>
 
-  <div class="stats">
-    <div class="stat-card">
-      <h3>Presos políticos</h3>
-      <div class="number"><span>1.339</span></div>
-      <p style="color:var(--text-secondary); font-size:14px; margin-top:6px;">Prisoners Defenders · ago 2026</p>
-    </div>
-    <div class="stat-card">
-      <h3>Pobreza extrema</h3>
-      <div class="number"><span>94%</span></div>
-      <p style="color:var(--text-secondary); font-size:14px; margin-top:6px;">OCDH 2026</p>
-    </div>
-    <div class="stat-card">
-      <h3>Muertes documentadas</h3>
-      <div class="number"><span>8.267</span></div>
-      <p style="color:var(--text-secondary); font-size:14px; margin-top:6px;">Cuba Archive desde 1959</p>
-    </div>
-    <div class="stat-card">
-      <h3>Población</h3>
-      <div class="number"><span>9,43M</span></div>
-      <p style="color:var(--text-secondary); font-size:14px; margin-top:6px;">ONEI</p>
-    </div>
-  </div>
+</div><a class="next" href="/pais/"><div><small>Siguiente · 02</small><strong>El país</strong></div><span class="arrow" aria-hidden="true">→</span></a></div>
 </main>
-
-<div class="lang-switch" onclick="toggleLang()">EN</div>
-
-<script>
-  const start = new Date('1959-01-01T00:00:00Z');
-  function updateClock() {
-    const now = new Date();
-    const diff = now - start;
-    const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
-    const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-    document.getElementById('years').textContent = years;
-    document.getElementById('days').textContent = days;
-    document.getElementById('hours').textContent = hours;
-    document.getElementById('minutes').textContent = minutes;
-    document.getElementById('seconds').textContent = seconds;
-  }
-  setInterval(updateClock, 1000);
-  updateClock();
-
-  function toggleLang() {
-    const btn = document.querySelector('.lang-switch');
-    btn.textContent = btn.textContent === 'EN' ? 'ES' : 'EN';
-  }
-</script>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><h2>CUBA: LA REALIDAD QUE NO TE CUENTAN</h2><p>Cuba es el pueblo, no el Partido. Sin propaganda. Sin filtros. El dólar se lee solo cada vez que se abre la página.</p></div>
+      <div><h3>Pásalo</h3><a class="tg" href="https://t.me/+4J17yFYQ2SYwYzAx" target="_blank" rel="noopener">Telegram ↗</a></div>
+      <div><h3>Fuentes 2026</h3><p>ONU / OCHA · OPS · AP · Miami Herald · Prisoners Defenders · Cubalex · HRW · UNE · OCDH · MINSAP · ONEI · ADN Cuba · elTOQUE · Yadio.</p></div>
+    </div>
+    <div class="foot-base"><span>Hoy en Cuba: <span data-live="date">—</span></span><span>Cada cifra dice su fuente. Esta página no pide dinero.</span></div>
+  </div>
+</footer>
+</div>
+<script src="/assets/vendor/d3-array.min.js" defer></script>
+<script src="/assets/vendor/d3-geo.min.js" defer></script>
+<script src="/assets/globe.js?v=mwwizqns" defer></script>
+<script src="/assets/site.js?v=mwwizqns" defer></script>
 </body>
 </html>
