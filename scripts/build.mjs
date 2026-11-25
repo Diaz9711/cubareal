@@ -212,7 +212,19 @@ function hero(lang) {
       <p class="mc-r" data-live="c-sentence"></p>
     </div>
   </div>
-</section>`;
+</section>
+<div class="mdock" aria-hidden="true">
+  <span class="mdock-l">T+ <b>1959</b></span>
+  <div class="mdock-d">
+    <span><b class="y" data-live="c-y">67</b><i>${h.units[0]}</i></span>
+    <span><b data-live="c-d">000</b><i>${h.units[1]}</i></span>
+    <span><b data-live="c-h">00</b><i>h</i></span>
+    <span><b data-live="c-m">00</b><i>m</i></span>
+    <span><b data-live="c-s">00</b><i>s</i></span>
+  </div>
+  <span class="mdock-r">${h.clock}</span>
+  <span class="mdock-bar"><i data-live="year-bar"></i></span>
+</div>`;
 }
 
 let count = 0;

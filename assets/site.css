@@ -621,3 +621,32 @@ a.btn-act:hover { background: #ff7a47; color: var(--ink) !important; }
 /* Enlaces-bloque sin subrayado */
 .doc a.rule, .doc a.card { text-decoration: none; }
 .doc a.rule:hover .disp { color: var(--signal); }
+
+/* ------------------------------------------- RELOJ ANCLADO (portada) */
+.mdock {
+  position: fixed; top: var(--bar-h); left: var(--rail-w); right: 0; z-index: 55; height: 44px;
+  display: flex; align-items: center; gap: 22px; padding: 0 var(--gut);
+  background: rgba(7, 8, 10, .92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule-2);
+  transform: translateY(-100%); opacity: 0; pointer-events: none;
+  transition: transform .35s var(--ease), opacity .25s;
+}
+.mdock.on { transform: none; opacity: 1; }
+.mdock-l { font-family: var(--f-mono); font-size: 11px; letter-spacing: .14em; color: var(--paper-3); white-space: nowrap; }
+.mdock-l b { color: var(--signal); font-weight: 600; }
+.mdock-d { display: flex; align-items: baseline; gap: 14px; font-variant-numeric: tabular-nums; }
+.mdock-d span { display: inline-flex; align-items: baseline; gap: 4px; }
+.mdock-d b { font-family: var(--f-display); font-weight: 800; font-variation-settings: "wdth" 125; font-size: 20px; letter-spacing: -.01em; color: var(--paper); }
+.mdock-d b.y { color: var(--signal); }
+.mdock-d i { font-style: normal; font-family: var(--f-mono); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--paper-4); }
+.mdock-r { margin-left: auto; font-family: var(--f-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--paper-4); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mdock-bar { position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; }
+.mdock-bar i { display: block; height: 100%; width: 0; background: var(--signal); box-shadow: 0 0 6px var(--signal); }
+@media (max-width: 1000px) { .mdock-r { display: none; } }
+@media (max-width: 720px) {
+  .mdock { gap: 12px; height: 40px; justify-content: space-between; }
+  .mdock-d { gap: 9px; }
+  .mdock-d b { font-size: 17px; }
+  .mdock-d i { font-size: 8px; letter-spacing: .06em; }
+}
+@media (max-width: 380px) { .mdock-l { display: none; } }

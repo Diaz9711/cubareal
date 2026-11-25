@@ -59,13 +59,22 @@
     const m = Math.floor(r / 6e4); r -= m * 6e4;
     const s = Math.floor(r / 1e3);
     set('c-y', y); set('c-d', pad(d, 3)); set('c-h', pad(h)); set('c-m', pad(m)); set('c-s', pad(s));
-    const bar = $('[data-live="year-bar"]'); if (bar) bar.style.width = ((now - a) / (b - a) * 100).toFixed(3) + '%';
+    const pct = ((now - a) / (b - a) * 100).toFixed(3) + '%';
+    $$('[data-live="year-bar"]').forEach(bar => { bar.style.width = pct; });
     set('c-sentence', lang === 'en'
       ? `${y} years, ${d} days, ${h} hours and ${m} minutes under the dictatorship that began January 1, 1959.`
       : `${y} años, ${d} días, ${h} horas y ${m} minutos bajo la dictadura que empezó el 1 de enero de 1959.`);
   }
   tick();
   setInterval(tick, 1000);
+
+  /* ---------- Reloj anclado: siempre visible en la portada ---------- */
+  const dock = $('.mdock'), bigClock = $('.mclock');
+  if (dock && bigClock && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => {
+      dock.classList.toggle('on', !e.isIntersecting);
+    }, { rootMargin: '-56px 0px 0px 0px' }).observe(bigClock);
+  } else if (dock) dock.classList.add('on');
 
   /* ---------- Dólar informal en vivo (Yadio; CORS abierto) ---------- */
   const fmt = n => new Intl.NumberFormat(L, { maximumFractionDigits: 0 }).format(n);
