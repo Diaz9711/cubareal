@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuba Real — La realidad que no te cuentan</title>
+<style>
+  :root {
+    --bg: #0a0a0c;
+    --surface: #111114;
+    --text: #f5f5f7;
+    --text-secondary: #a1a1a6;
+    --accent: #ff3b30;
+    --accent-soft: #ff453a;
+    --border: rgba(255,255,255,0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,10,12,0.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo {
+    font-weight: 600; font-size: 20px; letter-spacing: -0.4px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .logo span { color: var(--accent); }
+  nav a {
+    color: var(--text-secondary); text-decoration: none; margin-left: 28px;
+    font-size: 15px; transition: color 0.2s;
+  }
+  nav a:hover { color: var(--text); }
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 80px 24px 60px;
+  }
+  .hero h1 {
+    font-size: clamp(42px, 6vw, 72px); font-weight: 600;
+    letter-spacing: -1.5px; line-height: 1.05; max-width: 900px;
+  }
+  .hero p.subtitle {
+    margin-top: 20px; font-size: 21px; color: var(--text-secondary);
+    max-width: 620px; font-weight: 400;
+  }
+  .clock-container {
+    margin: 60px 0 40px;
+    position: relative;
+  }
+  .years-circle {
+    width: 180px; height: 180px; border-radius: 50%;
+    border: 2px solid transparent;
+    background: conic-gradient(from 0deg, #ff3b30, #ff6b6b, #ff3b30);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    animation: spin 20s linear infinite;
+  }
+  .years-circle::before {
+    content: ""; position: absolute; inset: 4px; border-radius: 50%;
+    background: var(--bg);
+  }
+  .years-number {
+    position: relative; font-size: 68px; font-weight: 600;
+    letter-spacing: -2px; z-index: 2;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .time-units {
+    display: flex; gap: 32px; justify-content: center; margin-top: 12px;
+    font-size: 15px; color: var(--text-secondary); font-variant-numeric: tabular-nums;
+  }
+  .time-units span { color: var(--accent); font-weight: 500; }
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px; max-width: 900px; margin: 80px auto; padding: 0 24px;
+  }
+  .stat-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px 24px; text-align: left;
+  }
+  .stat-card h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-secondary); margin-bottom: 8px; }
+  .stat-card .number { font-size: 36px; font-weight: 600; letter-spacing: -1px; }
+  .stat-card .number span { color: var(--accent); }
+  section { max-width: 1100px; margin: 0 auto; padding: 80px 24px; }
+  section h2 { font-size: 40px; font-weight: 600; letter-spacing: -0.8px; margin-bottom: 24px; }
+  .lang-switch { position: fixed; bottom: 24px; right: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 6px 12px; font-size: 14px; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Cuba <span>Real</span></div>
+  <nav>
+    <a href="#hoy">Hoy</a>
+    <a href="#presos">Presos</a>
+    <a href="#11j">11J</a>
+    <a href="#dictadura">Dictadura</a>
+    <a href="#exilio">Exilio</a>
+    <a href="#metodologia">Metodología</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <h1>La realidad que no te cuentan</h1>
+    <p class="subtitle">Documentación verificada de la crisis en Cuba. Fuentes, cifras y contexto. Sin propaganda.</p>
+
+    <div class="clock-container">
+      <div class="years-circle"></div>
+      <div class="years-number" id="years">67</div>
+      <div class="time-units" id="time-units">
+        <div><span id="days">0</span> días</div>
+        <div><span id="hours">0</span> h</div>
+        <div><span id="minutes">0</span> m</div>
+        <div><span id="seconds">0</span> s</div>
+      </div>
+    </div>
+    <p style="color: var(--text-secondary); font-size: 15px;">Desde el 1 de enero de 1959</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card">
+      <h3>Presos políticos</h3>
+      <div class="number"><span>1.339</span></div>
+      <p style="color:var(--text-secondary); font-size:14px; margin-top:6px;">Prisoners Defenders · ago 2026</p>
+    </div>
+    <div class="stat-card">
+      <h3>Pobreza extrema</h3>
+      <div class="number"><span>94%</span></div>
+      <p style="color:var(--text-secondary); font-size:14px; margin-top:6px;">OCDH 2026</p>
+    </div>
+    <div class="stat-card">
+      <h3>Muertes documentadas</h3>
+      <div class="number"><span>8.267</span></div>
+      <p style="color:var(--text-secondary); font-size:14px; margin-top:6px;">Cuba Archive desde 1959</p>
+    </div>
+    <div class="stat-card">
+      <h3>Población</h3>
+      <div class="number"><span>9,43M</span></div>
+      <p style="color:var(--text-secondary); font-size:14px; margin-top:6px;">ONEI</p>
+    </div>
+  </div>
+</main>
+
+<div class="lang-switch" onclick="toggleLang()">EN</div>
+
+<script>
+  const start = new Date('1959-01-01T00:00:00Z');
+  function updateClock() {
+    const now = new Date();
+    const diff = now - start;
+    const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+    const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    document.getElementById('years').textContent = years;
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('minutes').textContent = minutes;
+    document.getElementById('seconds').textContent = seconds;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  function toggleLang() {
+    const btn = document.querySelector('.lang-switch');
+    btn.textContent = btn.textContent === 'EN' ? 'ES' : 'EN';
+  }
+</script>
+</body>
+</html>
